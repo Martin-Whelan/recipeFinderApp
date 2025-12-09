@@ -1,26 +1,17 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import {heart, settings} from 'ionicons/icons';
+import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
+import { AppHeaderComponent } from "../components/app-header/app-header.component";
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons],
+  imports: [IonContent, AppHeaderComponent],
 })
 export class HomePage {
-  constructor(private router: Router) {
-    addIcons({heart, settings});
-  }
-
-  goToFavourites(){
-    this.router.navigate(['/favourites']);
-  }
-
-  goToSettings(){
-    this.router.navigate(['/settings'])
+  constructor() {
+    
   }
 }
