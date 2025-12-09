@@ -6,6 +6,7 @@ import { AppHeaderComponent } from "../components/app-header/app-header.componen
 import { addIcons } from 'ionicons';
 import { arrowBack } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
+import { TitleService } from '../services/title.service';
 
 @Component({
   selector: 'app-settings',
@@ -16,11 +17,12 @@ import { RouterLink } from '@angular/router';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() {
+  constructor(private titleService: TitleService) {
     addIcons({ arrowBack });
    }
 
   ngOnInit() {
+    this.titleService.setTitle('Settings');
   }
 
 }

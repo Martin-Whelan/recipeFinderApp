@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TitleService } from '../services/title.service';
+import { ActivatedRoute } from '@angular/router';
 import { IonContent, IonIcon, IonButtons } from '@ionic/angular/standalone';
 import { AppHeaderComponent } from "../components/app-header/app-header.component";
 import { addIcons } from 'ionicons';
@@ -16,11 +18,17 @@ import { RouterLink } from '@angular/router';
 })
 export class RecipeDetailsPage implements OnInit {
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private titleService: TitleService
+  ) {
     addIcons({ arrowBack });
    }
 
   ngOnInit() {
+    this.titleService.setTitle('Recipe Details');
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log("Recipes ID: ", id)
   }
 
 }
