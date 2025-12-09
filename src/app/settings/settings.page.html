@@ -1,7 +1,23 @@
 <app-app-header></app-app-header>
 
-<ion-content [fullscreen]="true">
-   <div id="container">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-radio-group
+    [value]="selectedUnit"
+    (ionChange)="onUnitChange($event.detail.value)"
+  >
+
+    <div class="settings-row">
+      <span>Metric</span>
+      <ion-radio value="metric"></ion-radio>
+    </div>
+
+    <div class="settings-row">
+      <span>US</span>
+      <ion-radio value="us"></ion-radio>
+    </div>
+  </ion-radio-group>
+
+  <div id="container">
     <ion-buttons slot="start">
         <ion-button routerLink="/home">
           <ion-icon slot="icon-only" name="arrow-back"></ion-icon>

@@ -1,6 +1,25 @@
 <app-app-header></app-app-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <h2>Your Favourite Recipes</h2>
+
+  <ion-card *ngFor="let recipe of favourites">
+    <img [src]="recipe.image" />
+
+    <ion-card-header>
+      <ion-card-title>{{ recipe.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button (click)="viewDetails(recipe.id)">
+        Details
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <p *ngIf="favourites.length === 0">No favourites yet!</p>
+
   <div id="container">
     <ion-buttons slot="start">
         <ion-button routerLink="/home">

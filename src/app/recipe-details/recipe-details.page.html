@@ -1,11 +1,50 @@
 <app-app-header></app-app-header>
 
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <ion-buttons slot="start">
-        <ion-button routerLink="/home">
-          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+
+<ion-content [fullscreen]="true"class="ion-padding" *ngIf="recipe">
+  <img [src]="recipe.image" class="recipe-image"/>
+
+  <h2>{{recipe.title}}</h2>
+
+  <ul>
+    <li *ngFor="let ingredients of recipe.extendedIngredients">
+      <img [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredients.image"/>
+      <br/>
+      {{ingredients.original}}
+      <br/>
+      <!--If unit===metric show the metric measures otherwise false and show US measures-->
+      <span class="ingredient-amount">
+        {{ unit === 'metric'
+          ? ingredients.measures.metric.amount + ' ' + ingredients.measures.metric.unitLong 
+          : ingredients.measures.us.amount + ' ' + ingredients.measures.us.unitLong
+        }}
+      </span>
+    </li>
+  </ul>
+
+  <h3>Instructions:</h3>
+
+  <div *ngFor="let step of recipe.analyzedInstructions[0]?.steps">
+    <p class="instruction-step">
+        <strong>Step {{step.number}}:</strong> {{step.step}}
+    </p> 
   </div>
+
+  <ion-button expand="block" color="primary" (click)="toggleFavourite()">
+    <ion-icon 
+    slot="start" 
+    [name]="isFavourite ? 'heart' : 'heart-outline'">
+    </ion-icon>
+      {{ isFavourite ? 'Remove From Favourites' : 'Add To Favourites' }}
+  </ion-button>
+
 </ion-content>
+  
+<div id="container">
+  <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+</div>
+
