@@ -21,10 +21,16 @@
   <p *ngIf="favourites.length === 0">No favourites yet!</p>
 
   <div id="container">
+    
+
+    <ion-button expand="block" (click)="goToShoppingList()">
+       Generate Shopping List
+    </ion-button>
+
     <ion-buttons slot="start">
-        <ion-button routerLink="/home">
-          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </div>
 </ion-content>

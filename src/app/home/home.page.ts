@@ -32,7 +32,7 @@ export class HomePage {
   ionViewWillEnter(){
     this.titleService.setTitle("G00438844")
   }
-
+  //Call the search recipes from the recipe service and get any result (all results) and set the array recipes to the result
   searchRecipes() {
     this.recipeService.searchRecipes(this.ingredients).subscribe((res: any) => {
       this.recipes = res.results;
@@ -42,4 +42,8 @@ export class HomePage {
   viewDetails(id: number) {
     this.router.navigate(['/recipe-details', id]);
   }
+
+  goToShoppingList() {
+    this.router.navigate(['/shopping-list']);
+}
 }

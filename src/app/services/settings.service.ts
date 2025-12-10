@@ -23,6 +23,7 @@ export class SettingsService {
   }
 
   async getUnit(): Promise<string> {
+    //Access the storage and get the current unit value
     const value = await this.storageDatabase?.get('unit');
     return value || this.defaultUnit; //if nothing is saved return default unit
   }

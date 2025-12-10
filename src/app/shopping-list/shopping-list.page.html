@@ -1,0 +1,28 @@
+<app-app-header></app-app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h2>Shopping List</h2>
+
+  <ion-item *ngFor="let item of shoppingList; let i = index">
+    <ion-checkbox slot="start" [(ngModel)]="item.checked"></ion-checkbox>
+    <ion-label>{{item.amount}} {{item.unit}} {{item.name}}</ion-label>
+
+    <ion-button (click)="removeItem(i)">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-button (click)="saveList()">Save</ion-button>
+
+  <div id="container">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" (click)="clearCheckedItems()">
+        Clear Checked Items
+      </ion-button>
+    </ion-buttons>
+  </div>
+</ion-content>

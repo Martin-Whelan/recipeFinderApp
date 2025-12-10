@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButton, IonButtons, IonIcon, IonCardContent, IonCardTitle, IonCardHeader, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonButton, IonIcon, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonButtons } from '@ionic/angular/standalone';
 import { AppHeaderComponent } from "../components/app-header/app-header.component";
 import { addIcons } from 'ionicons';
 import { arrowBack } from 'ionicons/icons';
@@ -14,9 +14,10 @@ import { FavouritesService } from '../services/favourites.service';
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   standalone: true,
-  imports: [IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon, IonButtons, IonContent, CommonModule, FormsModule, AppHeaderComponent, IonButton, RouterLink]
+  imports: [IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon, IonContent, CommonModule, FormsModule, AppHeaderComponent, IonButton, RouterLink]
 })
 export class FavouritesPage implements OnInit {
+
 
   favourites: any[] = [];
 
@@ -33,9 +34,14 @@ export class FavouritesPage implements OnInit {
     this.titleService.setTitle('Favourites');
     this.favourites = await this.favouriteService.getFavourites();
   }
-
+  //Get the recipe id and go to the details page - adding on the id at the end
   viewDetails(id: number) {
     this.router.navigate(['/recipe-details', id]);
+  }
+  //Jump to the shopping list, but generate it first
+  async goToShoppingList() {
+    await this.favouriteService.generateShoppingList();
+    this.router.navigate(['/shopping-list']);
   }
 
 }

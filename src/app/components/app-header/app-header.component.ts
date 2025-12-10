@@ -22,10 +22,10 @@ export class AppHeaderComponent  implements OnInit {
     private titleService: TitleService
   ) {
     addIcons({heart, settings});
-   }
+    }
 
   
-
+  
   ngOnInit() {
     this.titleService.currentTitle.subscribe(title => {
       this.pageTitle = title;
@@ -37,7 +37,6 @@ export class AppHeaderComponent  implements OnInit {
   }
 
   goToSettings(){
-    (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/settings'])
   }
 

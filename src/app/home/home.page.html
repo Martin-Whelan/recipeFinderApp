@@ -14,8 +14,12 @@
     <ion-button expand="full" (click)="searchRecipes()">
       Search
     </ion-button>
-  </div>
 
+    <ion-button (click)="goToShoppingList()">
+      Shopping List
+    </ion-button>
+  </div>
+  <!--for each recipe in the returned recipes, create cards-->
   <div *ngIf="recipes.length > 0" class="results">
     <ion-card *ngFor="let recipe of recipes">
       <img [src]="recipe.image"/>
