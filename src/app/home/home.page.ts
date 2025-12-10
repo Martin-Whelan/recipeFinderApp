@@ -28,7 +28,7 @@ export class HomePage {
   ) {
     
   }
-
+  //Had to change this to viewWillEnter because it was not changing using onInit because that only happened once
   ionViewWillEnter(){
     this.titleService.setTitle("G00438844")
   }

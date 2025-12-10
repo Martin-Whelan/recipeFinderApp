@@ -23,7 +23,7 @@
   </ul>
 
   <h3>Instructions:</h3>
-
+  <!--Group [0] has name and steps, we dont want the full array-->
   <div *ngFor="let step of recipe.analyzedInstructions[0]?.steps">
     <p class="instruction-step">
         <strong>Step {{step.number}}:</strong> {{step.step}}
@@ -31,11 +31,12 @@
   </div>
 
   <ion-button expand="block" color="primary" (click)="toggleFavourite()">
+    <!--checks if recipe is a fav, if it is display the solid heart, else display heart outline, same with isFavourite-->
     <ion-icon 
-    slot="start" 
-    [name]="isFavourite ? 'heart' : 'heart-outline'">
+      slot="start" 
+      [name]="isFavourite ? 'heart' : 'heart-outline'">
     </ion-icon>
-      {{ isFavourite ? 'Remove From Favourites' : 'Add To Favourites' }}
+    {{ isFavourite ? 'Remove From Favourites' : 'Add To Favourites' }}
   </ion-button>
 
   <div id="container">

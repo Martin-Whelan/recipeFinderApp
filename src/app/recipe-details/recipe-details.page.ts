@@ -54,7 +54,7 @@ export class RecipeDetailsPage implements OnInit {
       });
     }
   }
-
+  //Checks if recipe is a fav, if it is will remove instead of add
   async toggleFavourite() {
   if (this.isFavourite) {
     await this.favouriteService.removeFavourite(this.recipe.id);
