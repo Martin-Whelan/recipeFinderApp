@@ -31,8 +31,11 @@ export class FavouritesPage implements OnInit {
     }
 
   async ngOnInit() {
-    this.titleService.setTitle('Favourites');
     this.favourites = await this.favouriteService.getFavourites();
+  }
+
+  ionViewWillEnter(){
+    this.titleService.setTitle('Favourites');
   }
   //Get the recipe id and go to the details page - adding on the id at the end
   viewDetails(id: number) {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { TitleService } from '../services/title.service';
 import { IonContent, IonButtons, IonIcon, IonButton, IonCheckbox, IonItem, IonLabel } from '@ionic/angular/standalone';
 import { AppHeaderComponent } from "../components/app-header/app-header.component";
 import { addIcons } from 'ionicons';
@@ -21,6 +22,7 @@ export class ShoppingListPage implements OnInit {
 
   constructor(
     private storage: Storage,
+    private titleService: TitleService
     ) 
     { 
       addIcons({ arrowBack, trash });
@@ -31,6 +33,7 @@ export class ShoppingListPage implements OnInit {
   }
 
   async ionViewWillEnter() {
+    this.titleService.setTitle("Shopping List")
     this.shoppingList = await this.storage.get('shoppingList') || [];
   }
 

@@ -38,9 +38,11 @@ export class RecipeDetailsPage implements OnInit {
     addIcons({ arrowBack, heart, heartOutline });
    }
 
-  async ngOnInit() {
+  ionViewWillEnter(){
     this.titleService.setTitle('Recipe Details');
-
+  }
+  
+  async ngOnInit() {
     //Read in value from URl, in this case, read the id from the home page
     this.recipeId = this.route.snapshot.paramMap.get('id');
 
